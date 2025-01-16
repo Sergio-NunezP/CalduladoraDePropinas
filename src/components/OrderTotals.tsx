@@ -36,7 +36,7 @@ export default function OrderTotals({ order, tip, placeOrder }: OrderTotalsProps
             </div>
 
             <button
-                className="w-full bg-black p-3 uppercase text-white font-bold mt-10"
+                className="w-full bg-black p-3 uppercase text-white font-bold mt-10 hover:bg-opacity-75"
                 disabled={totalAmount === 0}
                 //xx last step: llamamos la función
                 onClick={placeOrder}

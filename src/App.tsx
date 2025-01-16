@@ -12,7 +12,7 @@ function App() {
 
   return (
     <>
-      <header className="bg-teal-400 py-5">
+      <header className="bg-orange-500 py-5">
         <h1 className="text-center text-4xl font-black">Calculadora de Propinas y Consumo</h1>
       </header>
 
@@ -55,7 +55,7 @@ function App() {
             </>
 
           ) : (
-            <p className="text-center">La orden está vacia</p>
+            <p className="text-center font-bold uppercase">La orden está vacia</p>
           )}
 
 
