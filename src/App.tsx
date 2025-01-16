@@ -1,13 +1,14 @@
 import MenuItem from "./components/MenuItem"
 import OrderContents from "./components/OrderContents"
-import TippercentageForm from "./components/TippercentageForm"
+import TipPercentageForm from "./components/TipPercentageForm"
 import OrderTotals from "./components/OrderTotals"
 import { menuItems } from "./data/db"
 import useOrder from "./hooks/useOrder"
 
 function App() {
 
-  const { order, addItem, removeItem, tip, setTip } = useOrder()
+  // xx second step: Agregar la función al useOrder
+  const { order, tip, setTip, addItem, removeItem, placeOrder } = useOrder()
 
   return (
     <>
@@ -31,19 +32,33 @@ function App() {
         </div>
 
         <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-10">
-          <OrderContents
-            order={order}
-            removeItem={removeItem}
-          />
 
-          <TippercentageForm
-            setTip={setTip}
-          />
+          {order.length ? (
+            <>
+              <OrderContents
+                order={order}
+                removeItem={removeItem}
+              />
 
-          <OrderTotals
-            order={order}
-            tip={tip}
-          />
+              <TipPercentageForm
+                setTip={setTip}
+                tip={tip}
+              />
+
+              <OrderTotals
+                order={order}
+                tip={tip}
+                //xx third step: añadir al componente
+                placeOrder={placeOrder}
+              />
+
+            </>
+
+          ) : (
+            <p className="text-center">La orden está vacia</p>
+          )}
+
+
         </div>
       </main>
     </>
