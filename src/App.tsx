@@ -4,11 +4,14 @@ import TipPercentageForm from "./components/TipPercentageForm"
 import OrderTotals from "./components/OrderTotals"
 import { menuItems } from "./data/db"
 import useOrder from "./hooks/useOrder"
+import { useReducer } from "react"
+import { initialState, OrderReducer } from "./reducers/order-reducer"
 
 function App() {
 
   // xx second step: Agregar la función al useOrder
   const { order, tip, setTip, addItem, removeItem, placeOrder } = useOrder()
+  const [state, dispatch] = useReducer(OrderReducer, initialState)
 
   return (
     <>
