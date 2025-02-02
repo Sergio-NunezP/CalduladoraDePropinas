@@ -3,14 +3,12 @@ import OrderContents from "./components/OrderContents"
 import TipPercentageForm from "./components/TipPercentageForm"
 import OrderTotals from "./components/OrderTotals"
 import { menuItems } from "./data/db"
-import useOrder from "./hooks/useOrder"
 import { useReducer } from "react"
 import { initialState, OrderReducer } from "./reducers/order-reducer"
 
 function App() {
 
-  // xx second step: Agregar la función al useOrder
-  const { order, tip, setTip, addItem, removeItem, placeOrder } = useOrder()
+  // xx second step: Agregar la función al useReducers???
   const [state, dispatch] = useReducer(OrderReducer, initialState)
 
   return (
@@ -36,23 +34,23 @@ function App() {
 
         <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-10">
 
-          {order.length ? (
+          {state.order.length ? (
             <>
               <OrderContents
-                order={order}
-                removeItem={removeItem}
+                order={state.order}
+                dispatch={dispatch}
               />
 
               <TipPercentageForm
-                setTip={setTip}
-                tip={tip}
+                dispatch={dispatch}
+                tip={state.tip}
               />
 
               <OrderTotals
-                order={order}
-                tip={tip}
+                order={state.order}
+                tip={state.tip}
                 //xx third step: añadir al componente
-                placeOrder={placeOrder}
+                dispatch={dispatch}
               />
 
             </>
